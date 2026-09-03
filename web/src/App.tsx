@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { mintToken, type Role } from './lib/api';
+import { mintToken, setToken, type Role } from './lib/api';
 import { Logo } from './components/ui';
 import { Admin } from './personas/Admin';
 import { Recruiter } from './personas/Recruiter';
@@ -13,12 +13,22 @@ const PERSONAS: { role: Role; sub: string; label: string; blurb: string }[] = [
 
 export const App = () => {
   const [active, setActive] = useState(0);
-  const [ready, setReady] = useState(false);
+  // Which persona the currently-held token belongs to. Deriving readiness from
+  // this rather than a separate boolean matters: a `ready` flag cleared inside an
+  // effect is still true on the render where the persona changed, so the new
+  // persona's screen mounts and fires its first request with the PREVIOUS
+  // persona's token — a guaranteed 403 on every switch.
+  const [tokenFor, setTokenFor] = useState<string | null>(null);
   const persona = PERSONAS[active]!;
+  const ready = tokenFor === persona.sub;
 
   useEffect(() => {
-    setReady(false);
-    mintToken(persona.sub, persona.role, persona.label).then(() => setReady(true));
+    let cancelled = false;
+    setToken(null);
+    mintToken(persona.sub, persona.role, persona.label).then(() => {
+      if (!cancelled) setTokenFor(persona.sub);
+    });
+    return () => { cancelled = true; };
   }, [persona.sub, persona.role, persona.label]);
 
   // Density differs by persona; the tokens do not. docs/07 §6.

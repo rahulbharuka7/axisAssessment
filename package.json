@@ -1,16 +1,12 @@
 {
-  "name": "axis-assessment",
+  "name": "axis-assessment-web",
   "private": true,
   "version": "1.0.0",
-  "description": "Axis Bank AI Assessment Module",
-  "workspaces": ["server", "web"],
+  "description": "Axis Bank AI Assessment Module — web client",
+  "workspaces": ["web"],
   "scripts": {
-    "dev": "npm run dev --workspace=server & npm run dev --workspace=web",
-    "dev:server": "npm run dev --workspace=server",
-    "dev:web": "npm run dev --workspace=web",
-    "build": "npm run build --workspace=server && npm run build --workspace=web",
-    "seed": "npm run seed --workspace=server",
-    "test": "npm run test --workspace=server",
-    "typecheck": "npm run typecheck --workspace=server && npm run typecheck --workspace=web"
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspace=web",
+    "typecheck": "npm run typecheck --workspace=web"
   }
 }
