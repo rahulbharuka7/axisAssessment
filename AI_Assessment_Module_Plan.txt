@@ -1,0 +1,189 @@
+AI ASSESSMENT MODULE 
+
+
+MAIN PARTS OF THE MODULE
+-----------------------------
+
+A) Test Taking Screen
+   - Candidate sees one question at a time with a timer.
+   - Supports different question types: multiple choice, short text
+     answer, and questions where an image is shown (diagram, chart,
+     scenario picture) for the candidate to study before answering.
+   - Candidate can also upload an image as part of their answer
+     (for example, a handwritten calculation, a diagram they drew,
+     or a photo of a physical task).
+   - Auto-saves answers so nothing is lost if internet drops.
+
+B) Proctoring (Anti-Cheating Watch)
+   - Turns on the candidate's webcam and microphone before the test starts.
+   - Checks candidate's face is visible and matches their ID/photo at login.
+   - Keeps checking during the test that:
+       * The same person is still in front of the camera.
+       * No second person appears in the background.
+       * Candidate does not switch browser tabs or open other apps.
+       * No phone or extra screen is being used.
+   - Records the whole session (video + screen) for later review.
+   - Flags anything suspicious with a timestamp so a human reviewer
+     can quickly jump to that moment in the recording.
+
+C) AI Analysis Engine
+   - After the test, AI goes through the recording and flags:
+       * Face mismatches or missing face.
+       * Multiple people detected.
+       * Tab-switching or copy-paste attempts.
+       * Unusual pauses or answer patterns.
+   - AI also scores open-ended or written answers automatically using
+     the competency definitions already listed in your blueprint sheet
+     (for example, checking if the answer touches on "Analytical
+     Ability" or "Problem Solving").
+   - Produces one simple report per candidate:
+       * Overall score
+       * Proctoring risk level (Low / Medium / High)
+       * Section-wise breakdown matching the blueprint categories
+       * Any flagged moments with video timestamps
+
+D) Recruiter Dashboard
+   - Axis Bank HR team logs in to see all candidates in one list.
+   - Can sort/filter by score, proctoring risk, or job role.
+   - Can watch flagged video clips directly instead of full recording.
+   - Can approve, reject, or shortlist candidates from the same screen.
+
+
+HOW A TEST WILL FLOW (STEP BY STEP)
+-----------------------------------------
+1. Candidate gets a test link and logs in.
+2. System checks camera, mic, and ID before allowing start.
+3. Test begins - proctoring recording starts in background.
+4. Candidate answers questions, including image-based questions and
+   image uploads where required.
+5. Test auto-submits when time is up or candidate submits manually.
+6. AI engine processes the recording and answers (few minutes).
+7. Report is ready and shows up on the recruiter dashboard.
+8. HR reviews and makes a decision.
+
+
+
+1 - Core Test Engine
+   - Basic test-taking screen with all question types.
+   - Image upload in questions and answers.
+   - Manual timer and auto-submit.
+
+2 - Proctoring
+   - Webcam/mic access and recording.
+   - Basic face-match at login.
+   - Tab-switch and multi-face detection.
+
+3 - AI Analysis
+   - Automated flagging of proctoring issues.
+   - Automated scoring of written answers against blueprint competencies.
+   - Report generation.
+
+4 - Dashboard & Integration
+   - Recruiter dashboard with filters and video review.
+   - Connect to Axis Bank's existing hiring/HR system so results flow
+     in automatically.
+
+5 - Testing & Rollout
+   - Run a pilot with a small batch of real candidates.
+   - Fix issues found in the pilot.
+   - Roll out to all hiring rounds.
+
+
+THINGS TO KEEP IN MIND
+----------------------------
+- Candidate data (video, ID, answers) is sensitive - must be stored
+  securely and deleted after a set retention period as per bank policy.
+- Get clear consent from candidates before turning on camera/mic.
+- Keep the AI's flags as "suggestions for a human to check," not
+  automatic rejections - a person should always make the final call.
+- Test the system on slow internet and low-end laptops, since not
+  every candidate will have a great setup.
+
+
+
+6. ADMIN / RECRUITER SIDE - TEST SETUP SCREEN
+-------------------------------------------------
+Before any candidate takes a test, someone from Axis Bank's HR/recruiter
+team needs to build and configure it. This should all happen through a
+simple "Create Test" area on the dashboard, in a few steps:
+
+A) Adding Questions
+   - Recruiter can add questions one by one, or bulk-upload from an
+     Excel sheet (similar layout to your blueprint files - competency,
+     question, options, correct answer, difficulty, marks).
+   - For each question, recruiter can:
+       * Pick question type (multiple choice, short answer, image-based
+         question, coding, etc.)
+       * Attach an image to the question (diagram, chart, scenario).
+       * Set marks for correct/wrong/partial answers.
+       * Tag it to a competency/section (e.g. "Numerical Ability")
+         so it matches the blueprint structure.
+   - Recruiter can also just pick from a ready-made "Question Bank"
+     instead of writing new questions every time.
+   - Option to randomize question order or pick a random set of
+     questions from a larger pool, so not every candidate sees the
+     exact same paper.
+
+B) Test-Level Settings
+   - Test Name, Job Role, and which competencies/sections to include
+     (pulled from the blueprint, e.g. Cognitive, Sales Personality, etc.)
+   - Number of Questions: recruiter sets total questions, and how many
+     per section (e.g. 16 cognitive + 10 sales personality).
+   - Time Limit: recruiter sets overall test duration, and can also set
+     a time limit per section or per question if needed.
+   - Passing/Cutoff Score: overall and per-section, matching the
+     blueprint's cutoff column.
+   - Test Window: recruiter sets a start date/end date during which the
+     test link stays valid (e.g. "open from 5 Sept to 10 Sept").
+   - Retake Rules:
+       * Allow retake: Yes/No
+       * If yes, how many attempts allowed (e.g. max 2 attempts)
+       * Cooldown period between attempts (e.g. must wait 24 hours)
+       * Whether the best score, latest score, or average is what
+         counts for the final result.
+
+C) Proctoring Settings (toggle on/off, per test)
+   - Turn proctoring on/off entirely for this test.
+   - Choose which checks to enable:
+       * Webcam face-match at login
+       * Continuous face presence check during test
+       * Multiple-face/person detection
+       * Tab-switch / window-switch detection
+       * Copy-paste block
+       * Full screen enforcement (test closes/warns if candidate exits
+         full-screen mode)
+       * Mobile phone or second device detection
+   - Violation Warning Limit: recruiter sets the maximum number of
+     warnings allowed (e.g. "3 warnings, then auto-submit test" or
+     "flag for review but don't stop the test").
+   - Action after limit is crossed: choose what happens automatically -
+     auto-submit and end test, lock the test and notify recruiter, or
+     just flag it in the report without interrupting the candidate.
+   - Recording Storage: how long to keep the proctoring video before
+     it's auto-deleted (as per data/privacy policy).
+
+D) Review & Publish
+   - Recruiter previews the test exactly as a candidate would see it.
+   - Publish and generate a shareable test link, or send it directly
+     via email/SMS to a list of candidates.
+   - Can pause, edit, or archive a test at any time before it's live.
+     Once candidates have started attempting it, question changes are
+     locked to keep scoring fair.
+
+E) After Candidates Attempt
+   - Recruiter can see, per candidate: status (not started / in
+     progress / completed), score, proctoring risk level, and number
+     of violations triggered.
+   - Recruiter can manually override an AI decision (e.g. clear a
+     false-positive flag) with a note, so the system also learns what
+     a "real" violation looks like over time.
+
+
+7. WHAT SUCCESS LOOKS LIKE
+------------------------------
+- Candidates can complete a test smoothly without technical issues.
+- Proctoring correctly catches real cheating attempts without
+  wrongly flagging honest candidates too often.
+- HR gets a clear, easy-to-read report instead of raw video footage.
+- The whole process (test to report) takes only a few minutes after
+  submission, not hours.
