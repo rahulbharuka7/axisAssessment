@@ -1,0 +1,12 @@
+{
+  "name": "axis-assessment-web",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Axis Bank AI Assessment Module — web client",
+  "workspaces": ["web"],
+  "scripts": {
+    "dev": "npm run dev --workspace=web",
+    "build": "npm run build --workspace=web",
+    "typecheck": "npm run typecheck --workspace=web"
+  }
+}
